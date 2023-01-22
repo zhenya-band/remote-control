@@ -1,7 +1,9 @@
 import {
     mouse, right, down, left, up,
 } from '@nut-tree/nut-js';
-import { drawCircle, drawRectangle, getMousePosition } from './actions';
+import {
+    drawCircle, drawRectangle, drawSquare, getMousePosition, printScreen,
+} from './actions';
 import { COMMANDS } from './const';
 
 export const handler = async (command: COMMANDS, params: string[]): Promise<string> => {
@@ -34,6 +36,12 @@ export const handler = async (command: COMMANDS, params: string[]): Promise<stri
 
     case COMMANDS.DRAW_RECTANGLE:
         return drawRectangle(param1, param2);
+
+    case COMMANDS.DRAW_SQUARE:
+        return drawSquare(param1);
+
+    case COMMANDS.PRNT_SCRN:
+        return printScreen();
 
     default:
         throw Error('Unknown command');
