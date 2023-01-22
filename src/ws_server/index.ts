@@ -9,11 +9,12 @@ export const init = () => {
         console.log('wsServer on connection');
 
         ws.on('message', async (data) => {
-            const [command, param] = data.toString().split(' ');
-            console.log(`Client command: command - ${command}, params - ${param}`);
+            const [command, ...params] = data.toString().split(' ');
+            console.log(`Client command: command - ${command}, params - ${params}`);
 
             try {
-                await handler(command as COMMANDS, +param);
+                const result = await handler(command as COMMANDS, params);
+                ws.send(result);
             } catch (error) {
                 console.log(`error ${error}`);
             }
