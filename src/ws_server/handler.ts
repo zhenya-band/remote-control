@@ -1,9 +1,11 @@
 import {
     mouse, right, down, left, up,
 } from '@nut-tree/nut-js';
-import {
-    drawCircle, drawRectangle, drawSquare, getMousePosition, printScreen,
-} from './actions';
+import { drawCircle } from './commands/drawCircle';
+import { drawRectangle } from './commands/drawRectangle';
+import { drawSquare } from './commands/drawSquare';
+import { getMousePosition } from './commands/getMousePosition';
+import { printScreen } from './commands/printScreen';
 import { COMMANDS } from './const';
 
 export const handler = async (command: COMMANDS, params: string[]): Promise<string> => {
